@@ -16,22 +16,9 @@ model:
     monitor: val/loss_simple_ema
     scale_factor: 0.18215
     use_ema: false
-    # ckpt_path: logs/2025-05-26T10-30-41_txt2ir-kl-32x32x4/checkpoints/last.ckpt
+    # ckpt_path: models/ldm/model.ckpt
 #    ignore_keys:
 #        - first_stage_model
-#    scheduler_config:
-#      target: ldm.lr_scheduler.LambdaLinearScheduler
-#      params:
-#        warm_up_steps:
-#          - 10000
-#        cycle_lengths:
-#          - 10000000000000
-#        f_start:
-#          - 1.0e-06
-#        f_max:
-#          - 1.0
-#        f_min:
-#          - 1.0
 
     unet_config:
       target: ldm.modules.diffusionmodules.openaimodel.UNetModel
@@ -60,7 +47,7 @@ model:
     first_stage_config:
       target: ldm.models.autoencoder.AutoencoderKL
       params:
-        ckpt_path: E:\projects\tx2ir\latent-diffusion-main\logs-LLVIP/2025-01-10T23-11-19_autoencoder_kl_t2ir_32x32x4/checkpoints/epoch=000003.ckpt
+        ckpt_path: models/first_stage_models/model.ckpt
         embed_dim: 4
         monitor: val/rec_loss
         ddconfig:

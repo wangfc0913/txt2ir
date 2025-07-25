@@ -90,18 +90,12 @@ class T2IRDataset(Dataset):
         caption = captions[cap_ix, :]
         caption = str(caption)
 
-        vis_path = '%s/images/%s_co.jpg' % (self.data_path, file_name)
         ir_path = '%s/images/%s_ir.jpg' % (self.data_path, file_name)
         mask_path = '%s/images/%s_mask.jpg' % (self.data_path, file_name)
-        vis_img = get_image(img_path=vis_path, img_type='vis', fine_size=self.fine_size)
-        vis_img = rearrange(torch.tensor(vis_img), "h w c -> c h w")
         ir_img = get_image(img_path=ir_path, img_type='ir', fine_size=self.fine_size)
         mask_img = get_mask(img_path=mask_path, fine_size=self.fine_size)
 
-        return dict(caption=dict(vis_img=vis_img, caption=caption), image=ir_img, mask=mask_img, file_name=file_name)
-        #return {'vis_img': vis_img, 'image': ir_img, 'mask': mask_img, 'caption': caption, 'file_name': file_name}
-        #return {'image': ir_img, 'mask': mask_img, 'caption': caption, 'file_name': file_name}
-        # return {'image': ir_img, 'conditional': vis_img, 'file_name': file_name}
+        return {'image': ir_img, 'mask': mask_img, 'caption': caption, 'file_name': file_name}
 
     def __len__(self):
         return len(self.filenames)

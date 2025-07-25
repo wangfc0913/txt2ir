@@ -7,7 +7,9 @@ __pycache__/
 
 # C extensions
 *.so
-
+*.ckpt
+*.7z
+LLVIP/
 # tests and logs
 tests/fixtures/cached_*_text.txt
 logs/

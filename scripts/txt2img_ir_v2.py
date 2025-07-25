@@ -3,14 +3,11 @@ import torch
 import numpy as np
 from omegaconf import OmegaConf
 from PIL import Image
-from tqdm import tqdm, trange
-from einops import rearrange
-from torchvision.utils import make_grid
-
 from ldm.util import instantiate_from_config
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.models.diffusion.plms import PLMSSampler
 from ldm.data.T2IRDataset import T2IRValidation
+
 
 def load_model_from_config(config, ckpt, verbose=False):
     print(f"Loading model from {ckpt}")
@@ -119,11 +116,11 @@ if __name__ == "__main__":
 
     # ddpm
     # config = OmegaConf.load("configs\\latent-diffusion\\txt2ir-kl-32x32x4.yaml")
-    # model = load_model_from_config(config, "logs\\2025-02-27T19-23-18_txt2ir-kl-32x32x4\\checkpoints\\model.ckpt")
+    # model = load_model_from_config(config, "models/ldm/model.ckpt")
 
     # ddpm-mask
-    config = OmegaConf.load("configs\\latent-diffusion\\txt2ir-kl-32x32x4.yaml")
-    model = load_model_from_config(config, "logs\\2025-03-14T23-10-06_txt2ir-kl-32x32x4\\checkpoints\\model.ckpt")
+    config = OmegaConf.load("configs/latent-diffusion/txt2ir-kl-32x32x4.yaml")
+    model = load_model_from_config(config, "models/ldm/model.ckpt")
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     model = model.to(device)
 
@@ -139,10 +136,9 @@ if __name__ == "__main__":
 
     # prompt = opt.prompt
 
-
-    #sample_path = os.path.join(outpath, "samples")
-    #os.makedirs(sample_path, exist_ok=True)
-    #base_count = len(os.listdir(sample_path))
+    # sample_path = os.path.join(outpath, "samples")
+    # os.makedirs(sample_path, exist_ok=True)
+    # base_count = len(os.listdir(sample_path))
 
     dataset = T2IRValidation(data_name="LLVIP")
     dataloader = torch.utils.data.DataLoader(
@@ -152,29 +148,12 @@ if __name__ == "__main__":
         num_workers=1)
     print(f"Found {len(dataloader)} inputs.")
 
-    all_samples=list()
+    all_samples = list()
     with torch.no_grad():
         with model.ema_scope():
             for i in range(0, 30):
                 out_file_name = os.path.join(outpath, 'ddpm_mask_7372_' + str(i) + '_sample.png')
-                # This long-wave infrared image shows an aerial night view of a sidewalk and street. On the left, a low-walled flowerbed, trees, and two green trash bins are visible. One bin is under a streetlamp with a signpost at its base, and a person walks beside a tree on the sidewalk.
-                # An aerial nighttime scene of a sidewalk and street is captured in this long-wave infrared image. To the left, a flowerbed with a low wall, trees, and two green bins are seen. One bin sits under a streetlight with a signpost below, while an individual walks on the sidewalk next to a tree.
-                # This infrared aerial shot of a nighttime street and sidewalk shows, on the left, a low-walled flowerbed, trees, and two green trash cans. One can is under a streetlamp with a signpost at its base, and a person walks on the sidewalk beside a tree.
 
-                # 5-15
-                # caption = ["This infrared aerial shot of a nighttime street and sidewalk shows, "
-                #            "on the left, trees. "
-                #            "and a person walks on the sidewalk beside a tree."]
-
-                # 15-20
-                # caption = ["This infrared aerial shot of a daynight street and sidewalk shows, "
-                #            "on the left, three person walk on the sidewalk beside a tree."]
-
-                # 20-30    30-40   40-50
-                # caption = ["This long-wave infrared image shows an aerial night view of a sidewalk and street. "
-                #            "On the left, a low-walled flowerbed, trees, and two green trash bins are visible. "
-                #            "One bin is under a streetlamp with a signpost at its base, "
-                #            "and a person walks beside a tree on the sidewalk."]
                 caption = ["This is a long-wave infrared image. And an aerial view of a nighttime street intersection. "
                            "A dense tree is planted on the sidewalk at the intersection, "
                            "with a traffic light standing next to it, and a manhole cover is visible nearby. "
@@ -183,7 +162,7 @@ if __name__ == "__main__":
                            "A pedestrian is walking on the sidewalk."]
 
                 c = model.get_learned_conditioning(caption)
-                shape = [4, opt.H//8, opt.W//8]
+                shape = [4, opt.H // 8, opt.W // 8]
                 samples_ddim, _ = sampler.sample(S=opt.ddim_steps,
                                                  conditioning=c,
                                                  batch_size=opt.n_samples,
@@ -199,4 +178,3 @@ if __name__ == "__main__":
 
                 predicted_image = np.squeeze(predicted_image)
                 Image.fromarray(predicted_image.astype(np.uint8)).save(out_file_name)
-

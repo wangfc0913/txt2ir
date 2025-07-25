@@ -12,6 +12,7 @@ from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.models.diffusion.plms import PLMSSampler
 from ldm.data.T2IRDataset import T2IRValidation, T2IRTrain
 
+
 def load_model_from_config(config, ckpt, verbose=False):
     print(f"Loading model from {ckpt}")
     pl_sd = torch.load(ckpt, map_location="cpu")
@@ -117,8 +118,8 @@ if __name__ == "__main__":
     )
     opt = parser.parse_args()
 
-    config = OmegaConf.load("E:\\projects\\tx2ir\\latent-diffusion-main\\configs\\latent-diffusion\\txt2ir-kl-32x32x4.yaml")  # TODO: Optionally download from same location as ckpt and chnage this logic
-    model = load_model_from_config(config, "E:\\projects\\tx2ir\latent-diffusion-main\\logs-LLVIP\\2025-03-14T23-10-06_txt2ir-kl-32x32x4\\checkpoints\\epoch=000341.ckpt")  # TODO: check path
+    config = OmegaConf.load("configs/latent-diffusion/txt2ir-kl-32x32x4.yaml")
+    model = load_model_from_config(config, "models/ldm/model.ckpt")
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     model = model.to(device)
