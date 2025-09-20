@@ -1,6 +1,6 @@
 # <h1 align = "center">TxT2IR: Text-to-Infrared image generation via thermal mask constraints in cross-modal learning</h1>
 
-<p align = "center">Fuchao Wang<sup>a</sup>, Jian Fang<sup>b</sup>, Pengfei Liu<sup>b</sup>, Ronghua Zhang<sup>a</sup></p>, Huaici Zhao<sup>a,b,*</sup>, Yuhuai Peng<sup>a,c,*</sup>
+<p align = "left">Fuchao Wang<sup>a</sup>, Jian Fang<sup>b</sup>, Pengfei Liu<sup>b</sup>, Ronghua Zhang<sup>a</sup></p>, Huaici Zhao<sup>a,b,*</sup>, Yuhuai Peng<sup>a,c,*</sup>
 
 <p align = "center">a.School of Computer Science and Engineering,  Northeastern University, Shenyang, Liaoning, China</p>
 <p align = "center">b.Shenyang Institute of Automation, Chinese Academy of Sciences, Shenyang, Liaoning, China</p>
