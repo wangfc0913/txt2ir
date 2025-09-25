@@ -102,10 +102,10 @@ class T2IRDataset(Dataset):
 
 
 class T2IRTrain(T2IRDataset):
-    def __init__(self, data_name='LLVIP', mode='train', fine_size=512):
+    def __init__(self, data_name='txt2irDataset', mode='train', fine_size=512):
         super().__init__(data_name=data_name, mode=mode, fine_size=fine_size)
 
 
 class T2IRValidation(T2IRDataset):
-    def __init__(self, data_name='LLVIP', mode='test', fine_size=512):
+    def __init__(self, data_name='txt2irDataset', mode='test', fine_size=512):
         super().__init__(data_name=data_name, mode=mode, fine_size=fine_size)
