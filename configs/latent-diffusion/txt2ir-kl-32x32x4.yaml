@@ -83,12 +83,12 @@ data:
     train:
       target: ldm.data.T2IRDataset.T2IRTrain
       params:
-        data_name: 'LLVIP'
+        data_name: 'txt2irDataset'
         mode: 'train'
         fine_size: 512
     validation:
       target: ldm.data.T2IRDataset.T2IRValidation
       params:
-        data_name: 'LLVIP'
+        data_name: 'txt2irDataset'
         mode: 'test'
         fine_size: 512
