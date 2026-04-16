@@ -15,23 +15,23 @@ Extensive experiments demonstrate that TxT2IR not only achieves satisfactory res
 
 <h2> <p align="center"> TxToIR Overview </p> </h2>
 
-<img src="figs/fig4.png" alt="Alt text" title="TxToIR Overview" style="zoom: 80%;" />
+<img src="figs/fig4.png" alt="Alt text" title="TxToIR Overview" style="zoom: 40%;" />
 
 <h2> <p align="center"> TxT2IR-dataset </p> </h2>  
 
 ### Construction of the TxT2IR-dataset
-<img src="figs/fig1.png" alt="Alt text" title="Construction of the TxT2IR-dataset" style="zoom: 60%;" />
-<img src="figs/fig2.png" alt="Alt text" title="Construction of the TxT2IR-dataset" style="zoom: 60%;" />
+<img src="figs/fig1.png" alt="Alt text" title="Construction of the TxT2IR-dataset" style="zoom: 40%;" />
+<img src="figs/fig2.png" alt="Alt text" title="Construction of the TxT2IR-dataset" style="zoom: 40%;" />
 
 #### Preview
-<img src="figs/fig5.png" alt="Alt text" title="TxT2IR-dataset preview" style="zoom: 60%;" />
+<img src="figs/fig5.png" alt="Alt text" title="TxT2IR-dataset preview" style="zoom: 40%;" />
 
 ### Construction of the Thermal mask
-<img src="figs/fig3.png" alt="Alt text" title="Construction of the Thermal mask" style="zoom: 60%;" />
+<img src="figs/fig3.png" alt="Alt text" title="Construction of the Thermal mask" style="zoom: 40%;" />
 
 ### Experiments
-<img src="figs/fig6.png" alt="Alt text" title="Experiments" style="zoom: 60%;" />
-<img src="figs/fig7.png" alt="Alt text" title="Experiments" style="zoom: 60%;" />
+<img src="figs/fig6.png" alt="Alt text" title="Experiments" style="zoom: 40%;" />
+<img src="figs/fig7.png" alt="Alt text" title="Experiments" style="zoom: 40%;" />
 
 ### Download
 
