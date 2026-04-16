@@ -35,7 +35,7 @@ Extensive experiments demonstrate that TxT2IR not only achieves satisfactory res
 
 ### Download
 
-- [Google Drive]()
+- [Google Drive](https://drive.google.com/file/d/1fkyrdFfdDYEcMjE9JPg6m8ObD8GAnyXD/view?usp=drive_link)
 - [Baidu Yun](https://pan.baidu.com/s/16vdHC8ktUI-hDZGfLnkTkQ?pwd=gq4y)
 
 If you have any question or suggestion about the dataset, please email to [Wang Fuchao](mailto:2390229@stu.neu.edu.cn).
